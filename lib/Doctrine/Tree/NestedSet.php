@@ -230,7 +230,7 @@ class Doctrine_Tree_NestedSet extends Doctrine_Tree implements Doctrine_Tree_Int
     public function fetchRoots()
     {
         $q = $this->getBaseQuery();
-        $q = $q->addWhere($this->_baseAlias . '.lft = ?', 1);
+        $q = $q->addWhere("{$this->_baseAlias}.{$this->getAttribute('rootColumnName')} IS NULL");
         return $q->execute();
     }
 
